@@ -50,9 +50,10 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+	$message = $exception->getMessage();
 	return json_encode( 
 		array('error' => array(	'code'		=> $code, 
-								'message'	=> $exception->getMessage(),
+								'message'	=> empty($message)? 'The resource or path you are looking for does not exist.' : $message,
 								'file'		=> $exception->getFile(), 
 								'line'		=> $exception->getLine() )
 			) 

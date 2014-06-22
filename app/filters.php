@@ -33,6 +33,15 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('logged_in', function()
+{
+	if ( !Input::has('token') ) return ApiResponse::error("No token found.");
+
+	$token = Input::get('token');
+	if ( !Token::where('key', '=', $token )->exists() )
+		return ApiResponse::error("Token mismatched.");
+});
+
 Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::guest('login');

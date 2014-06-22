@@ -1,0 +1,133 @@
+[2014-06-22 08:06:42] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'getInstance' (T_STRING), expecting variable (T_VARIABLE) or '$'' in C:\wamp\www\laravel-restful-api-starter\app\models\User.php:66
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-22 08:11:26] production.ERROR: exception 'MongoException' with message 'non-utf8 string: Ò1â_ËkÆ.^b>†Õ…‰½' in C:\wamp\www\laravel-restful-api-starter\vendor\jenssegers\mongodb\src\Jenssegers\Mongodb\Query\Builder.php:366
+Stack trace:
+#0 C:\wamp\www\laravel-restful-api-starter\vendor\jenssegers\mongodb\src\Jenssegers\Mongodb\Query\Builder.php(366): MongoCollection->insert(Array)
+#1 [internal function]: Jenssegers\Mongodb\Query\Builder->insertGetId(Array, '_id')
+#2 C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(914): call_user_func_array(Array, Array)
+#3 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6581): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#4 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6581): Jenssegers\Mongodb\Eloquent\Builder->insertGetId(Array, '_id')
+#5 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6571): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Jenssegers\Mongodb\Eloquent\Builder), Array)
+#6 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6528): Illuminate\Database\Eloquent\Model->performInsert(Object(Jenssegers\Mongodb\Eloquent\Builder))
+#7 C:\wamp\www\laravel-restful-api-starter\app\models\User.php(71): Illuminate\Database\Eloquent\Model->save()
+#8 C:\wamp\www\laravel-restful-api-starter\app\controllers\UserController.php(56): User->login('', '', '')
+#9 [internal function]: UserController->authenticate()
+#10 C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#11 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5551): Illuminate\Routing\Controller->callAction('authenticate', Array)
+#12 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5539): Illuminate\Routing\ControllerDispatcher->call(Object(UserController), Object(Illuminate\Routing\Route), 'authenticate')
+#13 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4770): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'UserController', 'authenticate')
+#14 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#15 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5098): call_user_func_array(Object(Closure), Array)
+#16 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4795): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#17 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4783): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#18 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#19 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#20 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7425): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#21 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(8031): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#22 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7978): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#23 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(10747): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#24 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#25 C:\wamp\www\laravel-restful-api-starter\public\index.php(49): Illuminate\Foundation\Application->run()
+#26 {main} [] []
+[2014-06-22 08:17:06] production.ERROR: exception 'MongoException' with message 'non-utf8 string: ®5^xéá/á†C:š»7¥8"wê' in C:\wamp\www\laravel-restful-api-starter\vendor\jenssegers\mongodb\src\Jenssegers\Mongodb\Query\Builder.php:366
+Stack trace:
+#0 C:\wamp\www\laravel-restful-api-starter\vendor\jenssegers\mongodb\src\Jenssegers\Mongodb\Query\Builder.php(366): MongoCollection->insert(Array)
+#1 [internal function]: Jenssegers\Mongodb\Query\Builder->insertGetId(Array, '_id')
+#2 C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(914): call_user_func_array(Array, Array)
+#3 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6581): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#4 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6581): Jenssegers\Mongodb\Eloquent\Builder->insertGetId(Array, '_id')
+#5 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6571): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Jenssegers\Mongodb\Eloquent\Builder), Array)
+#6 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(6528): Illuminate\Database\Eloquent\Model->performInsert(Object(Jenssegers\Mongodb\Eloquent\Builder))
+#7 C:\wamp\www\laravel-restful-api-starter\app\models\User.php(71): Illuminate\Database\Eloquent\Model->save()
+#8 C:\wamp\www\laravel-restful-api-starter\app\controllers\UserController.php(56): User->login('', '', '')
+#9 [internal function]: UserController->authenticate()
+#10 C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#11 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5551): Illuminate\Routing\Controller->callAction('authenticate', Array)
+#12 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5539): Illuminate\Routing\ControllerDispatcher->call(Object(UserController), Object(Illuminate\Routing\Route), 'authenticate')
+#13 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4770): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'UserController', 'authenticate')
+#14 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#15 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5098): call_user_func_array(Object(Closure), Array)
+#16 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4795): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#17 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4783): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#18 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#19 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#20 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7425): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#21 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(8031): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#22 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7978): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#23 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(10747): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#24 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#25 C:\wamp\www\laravel-restful-api-starter\public\index.php(49): Illuminate\Foundation\Application->run()
+#26 {main} [] []
+[2014-06-22 08:21:16] production.INFO: <!> Device Token Received :  - Device ID Received :  for user id: 53944887f1d90dc01e000029 [] []
+[2014-06-22 08:21:16] production.INFO: <!> Logged : 53944887f1d90dc01e000029 on [] with token 0Â¤Ã¡gY6Â©Â§Ã€Â¢Â®tÂµÃ²ÃªÃ£Ã$>N [] []
+[2014-06-22 08:26:18] production.INFO: <!> Showing : {"_id":"53944887f1d90dc01e000029","email":"bob@test.com","firstname":"bob","lastname":"dylan","updated_at":"2014-06-08 11:27:03","created_at":"2014-06-08 11:27:03"} [] []
+[2014-06-22 08:30:07] production.INFO: <!> Showing : {"_id":"53944887f1d90dc01e000029","email":"bob@test.com","firstname":"bob","lastname":"dylan","updated_at":"2014-06-08 11:27:03","created_at":"2014-06-08 11:27:03"} [] []
+[2014-06-22 08:30:27] production.INFO: <!> Showing : {"_id":"53944887f1d90dc01e000029","email":"bob@test.com","firstname":"bob","lastname":"dylan","updated_at":"2014-06-08 11:27:03","created_at":"2014-06-08 11:27:03"} [] []
+[2014-06-22 08:34:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '='' in C:\wamp\www\laravel-restful-api-starter\app\controllers\UserController.php:140
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-22 08:44:58] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php:5454
+Stack trace:
+#0 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4803): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4791): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4783): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7425): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(8031): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7978): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(10747): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\wamp\www\laravel-restful-api-starter\public\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-06-22 08:49:15] production.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php:5454
+Stack trace:
+#0 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4803): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4791): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4783): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#4 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#5 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7425): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#6 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(8031): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#7 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7978): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#8 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(10747): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#9 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#10 C:\wamp\www\laravel-restful-api-starter\public\index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-06-22 08:59:28] production.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Jenssegers\Mongodb\Query\Builder::getActiveRules()' in C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2063
+Stack trace:
+#0 C:\wamp\www\laravel-restful-api-starter\vendor\jenssegers\mongodb\src\Jenssegers\Mongodb\Query\Builder.php(868): Illuminate\Database\Query\Builder->__call('getActiveRules', Array)
+#1 [internal function]: Jenssegers\Mongodb\Query\Builder->__call('getActiveRules', Array)
+#2 [internal function]: Jenssegers\Mongodb\Query\Builder->getActiveRules()
+#3 C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(914): call_user_func_array(Array, Array)
+#4 [internal function]: Illuminate\Database\Eloquent\Builder->__call('getActiveRules', Array)
+#5 [internal function]: Jenssegers\Mongodb\Eloquent\Builder->getActiveRules()
+#6 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7169): call_user_func_array(Array, Array)
+#7 C:\wamp\www\laravel-restful-api-starter\vendor\jenssegers\mongodb\src\Jenssegers\Mongodb\Model.php(315): Illuminate\Database\Eloquent\Model->__call('getActiveRules', Array)
+#8 [internal function]: Jenssegers\Mongodb\Model->__call('getActiveRules', Array)
+#9 [internal function]: User->getActiveRules()
+#10 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7174): call_user_func_array(Array, Array)
+#11 C:\wamp\www\laravel-restful-api-starter\app\controllers\UserController.php(74): Illuminate\Database\Eloquent\Model::__callStatic('getActiveRules', Array)
+#12 C:\wamp\www\laravel-restful-api-starter\app\controllers\UserController.php(74): User::getActiveRules()
+#13 [internal function]: UserController->logout(Object(User))
+#14 C:\wamp\www\laravel-restful-api-starter\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(231): call_user_func_array(Array, Array)
+#15 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5551): Illuminate\Routing\Controller->callAction('logout', Array)
+#16 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5539): Illuminate\Routing\ControllerDispatcher->call(Object(UserController), Object(Illuminate\Routing\Route), 'logout')
+#17 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4770): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'UserController', 'logout')
+#18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(User))
+#19 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(5098): call_user_func_array(Object(Closure), Array)
+#20 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4795): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#21 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(4783): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#22 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(706): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#23 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(687): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#24 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7425): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#25 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(8031): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#26 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(7978): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#27 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(10747): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#28 C:\wamp\www\laravel-restful-api-starter\bootstrap\compiled.php(648): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#29 C:\wamp\www\laravel-restful-api-starter\public\index.php(49): Illuminate\Foundation\Application->run()
+#30 {main} [] []
+[2014-06-22 09:05:38] production.INFO: <!> Logged out from : 0Â¤Ã¡gY6Â©Â§Ã€Â¢Â®tÂµÃ²ÃªÃ£Ã$>N [] []

@@ -43,7 +43,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public static function getCreateRules() {		return self::$createRules; }
 	public static function getAuthRules() {			return self::$authRules; }
 
+	public function isOwnerOf($token) {
+        $owner = Token::userFor( $token );
+        if ( empty($owner) || $owner->user_id!=$this->id )
+            return false;
+        else
+            return true;
+    }
 
+    public function sessions() {
+    	return $this->hasMany('Token');
+    }
 
 	/**
 	 * Generate a token to authenticate a user
@@ -57,8 +67,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 					->where('device_os', '=', $device_type)
 					->delete();
 
-		$token = new Token();
-		$token->token =	Token::generate();
+		$token = Token::getInstance();
 		$token->user_id	= $this->id;
 		$token->device_id = $device_id;
 		$token->device_os =	$device_type;

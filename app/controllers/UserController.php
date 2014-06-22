@@ -56,7 +56,7 @@ class UserController extends BaseController {
 				$token = $user->login( $device_id, $device_type, $device_token );
 
 				Log::info('<!> Device Token Received : '. $device_token .' - Device ID Received : '. $device_id .' for user id: '.$token->user_id);
-				Log::info('<!> Logged : '.$token->user_id.' on '.$token->device_os.'['.$token->device_id.'] with token '.$token->token);
+				Log::info('<!> Logged : '.$token->user_id.' on '.$token->device_os.'['.$token->device_id.'] with token '.$token->key);
 				
 				$token->user = $user->toArray();
 			}
@@ -69,26 +69,24 @@ class UserController extends BaseController {
 		}
 	}
 
-	public function logout() {
-		$input = Input::all();
-		$validator = Validator::make( $input, User::getActiveRules() );
+	public function logout( $user ) {
 
-		if ( $validator->passes() ) {
-			$token = Token::where('token', '=', $input['token'])->first();
+		if ( !Input::has('token') ) return ApiResponse::error('No token given.');
 
-			if ( empty($token) )	return ApiResponse::error('No active session found.');
+		$input_token = Input::get('token');
+		$token = Token::where('key', '=', $input_token)->first();
 
-			if ( $token->delete() ){
-				Log::info('<!> Logged out from : '.$input['token'] );
-				return ApiResponse::success('User logged out successfully.');
-			}	
-			else
-				return ApiResponse::error('User could not log out. Please try again.');
+		if ( empty($token) ) return ApiResponse::error('No active session found.');
 
-		}
-		else {
-			return ApiResponse::validation($validator);
-		}
+		if ( $token->user_id !== $user->id ) return ApiResponse::error('You do not own this token.');
+
+		if ( $token->delete() ){
+			Log::info('<!> Logged out from : '.$input_token );
+			return ApiResponse::success('User logged out successfully.');
+		}	
+		else
+			return ApiResponse::error('User could not log out. Please try again.');
+
 	}
 
 	public function forgot() {
@@ -137,9 +135,8 @@ class UserController extends BaseController {
 	}
 
 	public function show($user) {
-
-		Log::info('<!> Showing : '.$user );
-
+		$user->sessions;
+		// Log::info('<!> Showing : '.$user );
 		return $user;
 	}
 
