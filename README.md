@@ -8,6 +8,8 @@ This starter uses several open source projects:
   - Laravel 4.2 : [Laravel]
   - Eloquent for MongoDB : [Laravel MongoDB]
   - Several homemade useful stuff...
+   - ApiResponse (extends Illuminate\Support\Facades\Response) to quickly send json encoded response message, and failed validation rules
+   - Token : allow a user to login from multiple devices
 
 ## What does it do?
 
