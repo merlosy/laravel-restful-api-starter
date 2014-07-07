@@ -1,7 +1,5 @@
 #Laravel Restful API Starter
 
-> Quickly build a RESTful API with Laravel! 
-
 ## What is it about?
 
 This starter uses several open source projects:
@@ -10,6 +8,7 @@ This starter uses several open source projects:
   - Several homemade useful stuff...
    - ApiResponse (extends Illuminate\Support\Facades\Response) to quickly send json encoded response message, and failed validation rules
    - Token : allow a user to login from multiple devices
+  - Seeder files (js) to set up MongoDB
 
 ## What does it do?
 
