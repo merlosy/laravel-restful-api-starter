@@ -24,7 +24,7 @@ class UserController extends BaseController {
 			$user->password 			= Hash::make( $input['password'] );
 
 			if ( !$user->save() )
-				$user = ApiResponse::error('An error occured. Please, try again.');
+				$user = ApiResponse::errorInternal('An error occured. Please, try again.');
 
 		}
 		else {
@@ -32,7 +32,7 @@ class UserController extends BaseController {
 		}
 		Log::info('<!> Created : '.$user);
 
-		return $user;
+		return ApiResponse::json($user);
 	}
 
 	public function authenticate() {
@@ -44,7 +44,7 @@ class UserController extends BaseController {
 
 			$user = User::where('email', '=', $input['email'])->first();
 			if ( !($user instanceof User) ) {
-				return ApiResponse::error("User is not registered.");
+				return ApiResponse::json("User is not registered.");
 			}
 			
 			if ( Hash::check( $input['password'] , $user->password) ) {
@@ -59,8 +59,9 @@ class UserController extends BaseController {
 				Log::info('<!> Logged : '.$token->user_id.' on '.$token->device_os.'['.$token->device_id.'] with token '.$token->key);
 				
 				$token->user = $user->toArray();
+				$token = ApiResponse::json($token, '202');
 			}
-			else $token = ApiResponse::error("Incorrect password.");
+			else $token = ApiResponse::json("Incorrect password.", '412');
 			
 			return $token;
 		}
@@ -71,21 +72,21 @@ class UserController extends BaseController {
 
 	public function logout( $user ) {
 
-		if ( !Input::has('token') ) return ApiResponse::error('No token given.');
+		if ( !Input::has('token') ) return ApiResponse::json('No token given.');
 
 		$input_token = Input::get('token');
 		$token = Token::where('key', '=', $input_token)->first();
 
-		if ( empty($token) ) return ApiResponse::error('No active session found.');
+		if ( empty($token) ) return ApiResponse::json('No active session found.');
 
-		if ( $token->user_id !== $user->id ) return ApiResponse::error('You do not own this token.');
+		if ( $token->user_id !== $user->id ) return ApiResponse::errorForbidden('You do not own this token.');
 
 		if ( $token->delete() ){
 			Log::info('<!> Logged out from : '.$input_token );
-			return ApiResponse::success('User logged out successfully.');
+			return ApiResponse::json('User logged out successfully.', '202');
 		}	
 		else
-			return ApiResponse::error('User could not log out. Please try again.');
+			return ApiResponse::errorInternal('User could not log out. Please try again.');
 
 	}
 
@@ -102,9 +103,9 @@ class UserController extends BaseController {
 			$sent = false;
 
 			if ( $sent )
-				return ApiResponse::success('Email sent successfully.');
+				return ApiResponse::json('Email sent successfully.');
 			else
-				return ApiResponse::warning('An error has occured, the Email was not sent.');
+				return ApiResponse::json('An error has occured, the Email was not sent.');
 		}
 		else {
 			return ApiResponse::validation($validator);
@@ -118,7 +119,7 @@ class UserController extends BaseController {
 		if ( $validator->passes() ) {
 			$reset = ResetKeys::where('key', $input['key'])->first();
 			if ( !($reset instanceof ResetKeys) )
-				return ApiResponse::error("Invalid reset key.");
+				return ApiResponse::errorUnauthorized("Invalid reset key.");
 
 			$user = $reset->user;
 
@@ -127,7 +128,7 @@ class UserController extends BaseController {
 
 			$reset->delete();
 
-			return $user;
+			return ApiResponse::json($user);
 		}
 		else {
 			return ApiResponse::validation($validator);
@@ -142,7 +143,7 @@ class UserController extends BaseController {
 
 	public function missingMethod( $parameters = array() )
 	{
-	    return ApiResponse::error('Sorry, no method found');
+	    return ApiResponse::errorNotFound('Sorry, no method found');
 	}
 
 }
