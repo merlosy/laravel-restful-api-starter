@@ -3,10 +3,10 @@
 ## What is it about?
 
 This starter is based on:
-  - Laravel 4.2 : [Laravel] Leverage the power a lightweight trendy Framework
+  - [Laravel] 4.2 :  Use the power a lightweight trendy Framework
 
 Use MongoDB for storage, and still Eloquent for ORM:
-  - Eloquent for MongoDB : [Laravel MongoDB] You can easily use MongoDB (NoSQL) as well as the basic SQL database managed by Laravel (MySQL, PGSQL, SQLite, SQL server). Everything is already configured!
+  - Eloquent for MongoDB : ([Laravel MongoDB]) You can easily use MongoDB (NoSQL) as well as the basic SQL database managed by Laravel (MySQL, PGSQL, SQLite, SQL server). Everything is already configured!
   - Seeder files (js) to set up MongoDB users
 
 Send custom response messages:
