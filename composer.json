@@ -1,7 +1,7 @@
 {
 	"name": "merlosy/laravel-restful-api_starter",
 	"description": "Starter for RESTful API with Laravel and MongoDB",
-	"keywords": [ "laravel", "rest", "restful", "api", "starter", "mongodb"],
+	"keywords": [ "laravel", "restful", "api", "starter", "mongodb"],
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
