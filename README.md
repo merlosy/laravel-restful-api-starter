@@ -1,5 +1,7 @@
 #Laravel Restful API Starter
 
+> Check out the [WIKI] now!
+
 ## What is it about?
 
 This starter is based on:
@@ -67,7 +69,7 @@ Contact me on [GitHub]
 ### License
 MIT
 
-
+[WIKI]:https://github.com/merlosy/laravel-restful-api-starter/wiki
 [Laravel MongoDB]:https://github.com/jenssegers/laravel-mongodb
 [Laravel]:http://laravel.com/docs/quick
 [GitHub]:https://github.com/merlosy
