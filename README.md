@@ -22,6 +22,7 @@ The starter allows a user to create an account, log in and log out, as well as a
 #### Upcoming...
 - reset lost password
 - OAuth 2.0
+- Push Notification
 - login with social media: Facebook, Twitter, Google+ ...
 
 
