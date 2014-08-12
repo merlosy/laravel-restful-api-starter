@@ -70,6 +70,61 @@ class UserController extends BaseController {
 		}
 	}
 
+	public function authenticateFacebook() {
+
+		$input = Input::all();
+		$validator = Validator::make( $input, User::getAuthFBRules() );
+
+		if ( $validator->passes() ){
+
+			$facebook = new FacebookWrapper();
+			$facebook->loginAsUser( $input['access_token'] );
+
+			$profile = $facebook->getMe();
+
+			if ( is_array($profile) && isset($profile['error']) )
+				return json_encode($profile);
+
+			Log::info( json_encode( $profile->asArray() ) );
+
+			$user = User::where('facebook.id', '=', $profile->getId() )->first();
+			
+			if ( !($user instanceof User) )
+				$user = User::where('email', '=', $profile->getProperty('email') )->first();
+
+			if ( !($user instanceof User) ){
+				// Create an account if none is found
+				$user = new User();
+				$user->firstname = $profile->getFirstName();
+				$user->lastname = $profile->getLastName();
+				$user->email = $profile->getProperty('email');
+				$user->password = Hash::make( uniqid() );
+			}
+				
+			$user->facebook = array('id'	=>	$profile->getId() );
+			$user->save();
+
+			$device_id = Input::has('device_id')? $input['device_id'] : '';
+			$device_type = Input::has('device_type')? $input['device_type'] : '';
+			$device_token = Input::has('device_token')? $input['device_token'] : '';
+
+			$token = $user->login( $device_id, $device_type, $device_token );
+			
+			Log::info('<!> Device Token Received : '. $device_token .' - Device ID Received : '. $device_id .' for user id: '.$token->user_id);
+			Log::info('<!> FACEBOOK Logged : '.$token->user_id.' on '.$token->device_os.'['.$token->device_id.'] with token '.$token->token);
+
+			$token = $token->toArray();
+			$token['user'] = $user->toArray();
+
+			Log::info( json_encode($token) );
+			
+			return ApiResponse::json($token);
+		}
+		else {
+			return ApiResponse::validation($validator);
+		}
+	}
+
 	public function logout( $user ) {
 
 		if ( !Input::has('token') ) return ApiResponse::json('No token given.');
@@ -88,6 +143,19 @@ class UserController extends BaseController {
 		else
 			return ApiResponse::errorInternal('User could not log out. Please try again.');
 
+	}
+
+	public function sessions() {
+
+		if ( !Input::has('token') ) return ApiResponse::json('No token given.');
+
+		$user = Token::userFor ( Input::get('token') );
+
+		if ( empty($user) ) return ApiResponse::json('User not found.');
+
+		$user->sessions;
+
+		return ApiResponse::json( $user );
 	}
 
 	public function forgot() {

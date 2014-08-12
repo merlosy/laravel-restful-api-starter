@@ -27,7 +27,8 @@ Route::get('/', function()
 Route::group(array('prefix' => 'v1'), function(){
     
 
-    Route::post('users/auth',           array('as' => 'v1.users.auth', 		'uses' => 'UserController@authenticate') );
+    Route::post('users/auth',           array('as' => 'v1.users.auth',          'uses' => 'UserController@authenticate') );
+    Route::post('users/auth/facebook',  array('as' => 'v1.users.auth.facebook', 'uses' => 'UserController@authenticateFacebook') );
     // Route::post('users/forgot',         array('as' => 'v1.users.forgot',    'uses' => 'UserController@forgot') );
     // Route::post('users/reset',          array('as' => 'v1.users.reset',     'uses' => 'UserController@resetPassword') );
 
@@ -36,7 +37,8 @@ Route::group(array('prefix' => 'v1'), function(){
     //	user needs to have a registered and active token
     Route::group(array('before' => 'logged_in'), function() {
 
-       
+        Route::get('users/sessions',    array('as' => 'v1.users.sessions',      'uses' => 'UserController@sessions') );
+
         Route::group(array('prefix' => 'users/{users}'), function() {
 
             Route::get('show',          array('as' => 'v1.users.show',      'uses' => 'UserController@show') );

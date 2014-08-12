@@ -103,6 +103,7 @@
         "queue.failer": "Illuminate\\Queue\\QueueServiceProvider",
         "command.queue.work": "Illuminate\\Queue\\QueueServiceProvider",
         "command.queue.listen": "Illuminate\\Queue\\QueueServiceProvider",
+        "command.queue.restart": "Illuminate\\Queue\\QueueServiceProvider",
         "command.queue.subscribe": "Illuminate\\Queue\\QueueServiceProvider",
         "redis": "Illuminate\\Redis\\RedisServiceProvider",
         "remote": "Illuminate\\Remote\\RemoteServiceProvider",

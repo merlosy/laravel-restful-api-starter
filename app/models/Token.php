@@ -13,7 +13,7 @@ class Token extends Eloquent {
 		do {
 			 $key = openssl_random_pseudo_bytes ( 30 , $strongEnough );
 		} while( !$strongEnough );
-        $token->key = utf8_encode($key);
+        $token->key = base64_encode($key);
 
         return $token;
     }
