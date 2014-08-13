@@ -6,8 +6,8 @@ return array(
 
 	'facebook'	=> 	array(
 
-				'app_id'					=> 	'751564744904961',
-				'app_secret'				=>	'86d50c06e12d1f57562bb77f2b5ee299',
+				'app_id'					=> 	'',
+				'app_secret'				=>	'',
 				'app_secret_proof'			=>	false,
 
 			),
