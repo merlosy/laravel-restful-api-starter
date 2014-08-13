@@ -17,49 +17,9 @@ Send custom response messages:
 Multi-device session:
    - Token : allow a user to login from multiple devices and track all his active sessions.
 
-## What does it do?
-
-The starter allows a user to create an account, log in and log out, as well as accessing his personnal info. This can be a good place to start to build an API that communicates with mobile apps.
-
-#### Upcoming...
-- reset lost password
-- OAuth 2.0
-- Push Notification
-- login with social media: Facebook, Twitter, Google+ ...
-
-
-## Get it working
-
-### Requirements
-
-    PHP >= 5.4.0
-    MCrypt PHP Extension
-
-## How to install
-### 1. Get the code
-
-	git clone git://github.com/merlosy/laravel-restful-api-starter.git my_api
-
-or
-
-    https://github.com/merlosy/laravel-restful-api-starter/archive/master.zip
-
-### 2. Use Composer to install dependencies
-
-    cd my_api
-	composer install --dev
-	
-### 3. Set you own project key
-
-    php artisan key:generate
-    
-### 4. Install mongoDB et set up the config files
-
-### 5. Try it
-
-I use [Postman] that works in Chrome. It is very convienient and easy to use. To check out available URIs, use:
-    
-    php artisan routes
+Social media login:
+   - single config file: *app/config/social.php*
+   - [Facebook] Authentication (sdk v4): Wrapper class to easily connect and retrieve info
 
 ## About it
 
@@ -69,6 +29,7 @@ Contact me on [GitHub]
 ### License
 MIT
 
+[Facebook]:https://github.com/facebook/facebook-php-sdk-v4
 [WIKI]:https://github.com/merlosy/laravel-restful-api-starter/wiki
 [Laravel MongoDB]:https://github.com/jenssegers/laravel-mongodb
 [Laravel]:http://laravel.com/docs/quick
