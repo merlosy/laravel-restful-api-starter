@@ -8,6 +8,9 @@ class UserController extends BaseController {
 		return User::all();
 	}
 	
+	/**
+	 *	Create a new user account
+	 */
 	public function store() {
 
 		$input = Input::all();
@@ -35,6 +38,9 @@ class UserController extends BaseController {
 		return ApiResponse::json($user);
 	}
 
+	/**
+	 *	Authenticate a registered user, with its email and password
+	 */
 	public function authenticate() {
 
 		$input = Input::all();
@@ -70,6 +76,11 @@ class UserController extends BaseController {
 		}
 	}
 
+	/**
+	 *	Authenticate a user based on Facebook access token. If the email address from facebook is already in the database, 
+	 *	the facebook user id will be added. 
+	 *	If not, a new user will be created with a random password and user info from facebook.
+	 */
 	public function authenticateFacebook() {
 
 		$input = Input::all();
@@ -87,7 +98,7 @@ class UserController extends BaseController {
 
 			Log::info( json_encode( $profile->asArray() ) );
 
-			$user = User::where('facebook.id', '=', $profile->getId() )->first();
+			$user = User::where('facebook_id', '=', $profile->getId() )->first();
 			
 			if ( !($user instanceof User) )
 				$user = User::where('email', '=', $profile->getProperty('email') )->first();
@@ -101,7 +112,7 @@ class UserController extends BaseController {
 				$user->password = Hash::make( uniqid() );
 			}
 				
-			$user->facebook = array('id'	=>	$profile->getId() );
+			$user->facebook_id = $profile->getId();
 			$user->save();
 
 			$device_id = Input::has('device_id')? $input['device_id'] : '';
@@ -125,6 +136,10 @@ class UserController extends BaseController {
 		}
 	}
 
+	/**
+	 *	Logout a user: remove the specified active token from the database
+	 *	@param user User
+	 */
 	public function logout( $user ) {
 
 		if ( !Input::has('token') ) return ApiResponse::json('No token given.');
@@ -134,7 +149,7 @@ class UserController extends BaseController {
 
 		if ( empty($token) ) return ApiResponse::json('No active session found.');
 
-		if ( $token->user_id !== $user->id ) return ApiResponse::errorForbidden('You do not own this token.');
+		if ( $token->user_id !== $user->_id ) return ApiResponse::errorForbidden('You do not own this token.');
 
 		if ( $token->delete() ){
 			Log::info('<!> Logged out from : '.$input_token );
@@ -145,6 +160,9 @@ class UserController extends BaseController {
 
 	}
 
+	/**
+	 *	Show all active sessions for the specified user, check access rights
+	 */
 	public function sessions() {
 
 		if ( !Input::has('token') ) return ApiResponse::json('No token given.');
@@ -158,6 +176,10 @@ class UserController extends BaseController {
 		return ApiResponse::json( $user );
 	}
 
+	/**
+	 *	Not functional
+	 *	@deprecated
+	 */
 	public function forgot() {
 		$input = Input::all();
 		$validator = Validator::make( $input, User::getForgotRules() );
@@ -180,6 +202,10 @@ class UserController extends BaseController {
 		}
 	}
 
+	/**
+	 *	Not functional
+	 *	@deprecated
+	 */
 	public function resetPassword() {
 		$input = Input::all();
 		$validator = Validator::make( $input, User::getResetPassRules() );
@@ -203,6 +229,10 @@ class UserController extends BaseController {
 		}
 	}
 
+	/**
+	 *	Show all active sessions for the specified user, no access right check
+	 *	@param user User
+	 */
 	public function show($user) {
 		$user->sessions;
 		// Log::info('<!> Showing : '.$user );

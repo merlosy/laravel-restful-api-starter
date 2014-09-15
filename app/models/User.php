@@ -52,7 +52,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function isOwnerOf($token) {
         $owner = Token::userFor( $token );
-        if ( empty($owner) || $owner->user_id!=$this->id )
+        if ( empty($owner) || $owner->user_id!=$this->_id )
             return false;
         else
             return true;
@@ -75,7 +75,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 					->delete();
 
 		$token = Token::getInstance();
-		$token->user_id	= $this->id;
+		$token->user_id	= $this->_id;
 		$token->device_id = $device_id;
 		$token->device_os =	$device_type;
 		$token->device_token = $device_token;

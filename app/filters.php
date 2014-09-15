@@ -35,11 +35,11 @@ App::after(function($request, $response)
 
 Route::filter('logged_in', function()
 {
-	if ( !Input::has('token') ) return ApiResponse::error("No token found.");
+	if ( !Input::has('token') ) return ApiResponse::errorUnauthorized("No token found.");
 
 	$token = Input::get('token');
 	if ( !Token::where('key', '=', $token )->exists() )
-		return ApiResponse::error("Token mismatched.");
+		return ApiResponse::errorUnauthorized("Token mismatched.");
 });
 
 Route::filter('auth', function()
