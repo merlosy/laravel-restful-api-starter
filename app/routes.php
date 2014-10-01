@@ -19,18 +19,37 @@ Route::model('users', 'User');
 |
 */
 
+
 Route::get('/', function()
 {
 	return View::make('hello');
 });
 
-Route::group(array('prefix' => 'v1'), function(){
-    
 
+Route::group(array('prefix' => 'v1'), function(){
+
+    /**
+     *  Allows the api to receive the push
+     */
+    Route::post('emails/queue/push', function() {
+        Log::info('<!> RECEIVED THE PUSH !');
+        return Queue::marshal();
+    });
+
+    /**
+     * Password reset flow:
+     * 1. /forget : user request for a reset token, a link will be sent by email
+     * 2. /reset/key : link on the email redirects to the form on the mobile app
+     * 3. /reset : form on the mobile app defines the new password
+     */
+    Route::post('users/forgot',         array('as' => 'v1.users.forgot',    'uses' => 'UserController@forgot') );
+    Route::get('users/reset/{key}', function($key){
+        return ApiResponse::toApplication('reset/'.$key);
+    });
+    Route::post('users/reset',          array('as' => 'v1.users.reset',     'uses' => 'UserController@resetPassword') );
+    
     Route::post('users/auth',           array('as' => 'v1.users.auth',          'uses' => 'UserController@authenticate') );
     Route::post('users/auth/facebook',  array('as' => 'v1.users.auth.facebook', 'uses' => 'UserController@authenticateFacebook') );
-    // Route::post('users/forgot',         array('as' => 'v1.users.forgot',    'uses' => 'UserController@forgot') );
-    // Route::post('users/reset',          array('as' => 'v1.users.reset',     'uses' => 'UserController@resetPassword') );
 
     Route::resource('users', 'UserController', array('only' => array('index', 'store')) );
 

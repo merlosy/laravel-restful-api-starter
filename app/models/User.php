@@ -35,20 +35,26 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected static $authRules = array(
 		'email'					=>	'required|email',
 		'password'				=>	'required',
-		// 'device_id'				=>	'required',
-		// 'device_type'			=>	'required',
+		'device_id'				=>	'required',
+		'device_type'			=>	'required',
 		// 'device_token'			=>	'required',
 	);
 	protected static $fb_authRules = array(
 		'access_token'			=>	'required',
-		// 'device_id'				=>	'required',
-		// 'device_type'			=>	'required',
+		'device_id'				=>	'required',
+		'device_type'			=>	'required',
 		// 'device_token'			=>	'required',
+	);
+
+	protected static $forgotRules = array(
+		'email'			=>	'required|email|exists:users',
 	);
 
 	public static function getCreateRules() {		return self::$createRules; }
 	public static function getAuthFBRules() {		return self::$fb_authRules; }
 	public static function getAuthRules() {			return self::$authRules; }
+
+	public static function getForgotRules() {		return self::$forgotRules; }
 
 	public function isOwnerOf($token) {
         $owner = Token::userFor( $token );
@@ -82,6 +88,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$token->save();
 		
 		return $token;
+    }
+
+    public function generateResetKey() {
+    	return ResetKey::getInstance($this);
     }
 
 	/**

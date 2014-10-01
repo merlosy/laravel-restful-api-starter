@@ -177,8 +177,7 @@ class UserController extends BaseController {
 	}
 
 	/**
-	 *	Not functional
-	 *	@deprecated
+	 *	
 	 */
 	public function forgot() {
 		$input = Input::all();
@@ -187,15 +186,19 @@ class UserController extends BaseController {
 		if ( $validator->passes() ) {
 
 			$user = User::where('email', '=', $input['email'])->first();
-			// $reset = $user->generatePassResetKey();
+			$reset = $user->generateResetKey();
 
-			// $sent = TriggerEmail::send( 'lost_password', $user, $reset );
 			$sent = false;
+
+			if ( $reset->save() ){
+				Log::info($reset);
+				$sent = EmailTrigger::send( 'lost_password', $reset );
+			}
 
 			if ( $sent )
 				return ApiResponse::json('Email sent successfully.');
 			else
-				return ApiResponse::json('An error has occured, the Email was not sent.');
+				return ApiResponse::json('An error has occured, the Email was not sent.', 500);
 		}
 		else {
 			return ApiResponse::validation($validator);

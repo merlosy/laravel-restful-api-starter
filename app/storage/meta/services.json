@@ -54,6 +54,7 @@
         "cache.store": "Illuminate\\Cache\\CacheServiceProvider",
         "memcached.connector": "Illuminate\\Cache\\CacheServiceProvider",
         "command.cache.clear": "Illuminate\\Cache\\CacheServiceProvider",
+        "command.cache.table": "Illuminate\\Cache\\CacheServiceProvider",
         "command.session.database": "Illuminate\\Session\\CommandsServiceProvider",
         "command.command.make": "Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider",
         "composer": "Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider",

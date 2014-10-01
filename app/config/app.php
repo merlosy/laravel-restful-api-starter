@@ -3,6 +3,13 @@
 return array(
 
 	/*
+	 * Additionnal property to identify the application
+	 * It is also used to define a protocol specific to a mobile app.
+	 * The protocol name is a slug of the app name defined below.
+	 */
+	'name'	=> 'Merlosy API',
+
+	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
 	|--------------------------------------------------------------------------

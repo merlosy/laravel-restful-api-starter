@@ -8,16 +8,19 @@ class Token extends Eloquent {
 
     protected $guarded = array('key');
 
-	public static function getInstance() {
-        $token = new Token();
-		do {
-			 $key = openssl_random_pseudo_bytes ( 30 , $strongEnough );
-		} while( !$strongEnough );
+    public static function randomKey($size) {
+        do {
+             $key = openssl_random_pseudo_bytes ( $size , $strongEnough );
+        } while( !$strongEnough );
         $key = str_replace( '+', '', base64_encode($key) );
         $key = str_replace( '/', '', $key );
 
-        $token->key = base64_encode($key);
+        return base64_encode($key);
+    }
 
+	public static function getInstance() {
+        $token = new Token();
+        $token->key = Token::randomKey(32);
         return $token;
     }
 

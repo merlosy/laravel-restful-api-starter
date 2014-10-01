@@ -56,9 +56,10 @@ class ApiResponse extends Response {
 	 *	@param url $url protocol to redirect to
 	 *	@return ApiResponse Response to client
 	 */
-	public static function makeProtocol ( $url ) {
+	public static function toApplication ( $url_suffix, $protocol=null ) {
         $response = self::make();
-        $response->header('Location', $url);
+        $protocol = empty($protocol)? Str::slug( Config::get('app.name') ) : $protocol;
+        $response->header('Location', $protocol.'://'.$url_suffix);
         return $response;
     }
 
