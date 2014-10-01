@@ -177,7 +177,7 @@ class UserController extends BaseController {
 	}
 
 	/**
-	 *	
+	 *	Initiate request for new password
 	 */
 	public function forgot() {
 		$input = Input::all();
@@ -206,17 +206,26 @@ class UserController extends BaseController {
 	}
 
 	/**
-	 *	Not functional
-	 *	@deprecated
+	 *	Send reset password form with KEY
 	 */
 	public function resetPassword() {
 		$input = Input::all();
-		$validator = Validator::make( $input, User::getResetPassRules() );
+		$validator = Validator::make( $input, User::getResetRules() );
 
 		if ( $validator->passes() ) {
-			$reset = ResetKeys::where('key', $input['key'])->first();
-			if ( !($reset instanceof ResetKeys) )
+			$reset = ResetKey::where('key', $input['key'])->first();
+			$user = User::where('email', $input['email'])->first();
+
+			if ( !($reset instanceof ResetKey) )
 				return ApiResponse::errorUnauthorized("Invalid reset key.");
+
+			if ( $reset->user_id != $user->_id )
+				return ApiResponse::errorUnauthorized("Reset key does not belong to this user.");
+
+			if ( $reset->isExpired() ) {
+				$reset->delete();
+				return ApiResponse::errorUnauthorized("Reset key is expired.");
+			}
 
 			$user = $reset->user;
 

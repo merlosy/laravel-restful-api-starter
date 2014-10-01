@@ -31,7 +31,8 @@ class ResetKey extends Eloquent {
     }
 
     public function isExpired(){
-    	// TODO implement
+    	$date_old = new DateTime( is_array($this->expiration_date)? $this->expiration_date['date'] : $this->expiration_date );
+    	return $date_old < new DateTime();
     }
 
 

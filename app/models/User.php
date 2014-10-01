@@ -50,11 +50,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'email'			=>	'required|email|exists:users',
 	);
 
+	protected static $resetRules = array(
+		'email'					=>	'required|email|exists:users',
+		'password'				=>	'required|min:6|confirmed',
+		'password_confirmation'	=>	'required|min:6',
+	);
+
 	public static function getCreateRules() {		return self::$createRules; }
 	public static function getAuthFBRules() {		return self::$fb_authRules; }
 	public static function getAuthRules() {			return self::$authRules; }
 
 	public static function getForgotRules() {		return self::$forgotRules; }
+	public static function getResetRules() {		return self::$resetRules; }
 
 	public function isOwnerOf($token) {
         $owner = Token::userFor( $token );
