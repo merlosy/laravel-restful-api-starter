@@ -85,7 +85,7 @@ return array(
 	|
 	*/
 
-	'key' => 'DGebeDjAWBTW3pFlJbSoe29qdqaxBhaW',
+	'key' => 'generate-new-one!!!',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
