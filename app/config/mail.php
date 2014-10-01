@@ -15,6 +15,7 @@ return array(
 	|
 	*/
 
+	// 'driver' => 'mail',
 	'driver' => 'smtp',
 
 	/*
@@ -42,6 +43,7 @@ return array(
 	|
 	*/
 
+	// 'port' => 2525,
 	'port' => 587,
 
 	/*
@@ -55,7 +57,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'merlosyj@gmail.com', 'name' => 'Merlosy'),
+	'from' => array('address' => 'your-email@gmail.com', 'name' => 'John Doe'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -81,7 +83,7 @@ return array(
 	|
 	*/
 
-	'username' => 'merlosyj@gmail.com',
+	'username' => 'your-email@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -94,7 +96,7 @@ return array(
 	|
 	*/
 
-	'password' => '90times85',
+	'password' => 'your-password',
 
 	/*
 	|--------------------------------------------------------------------------
