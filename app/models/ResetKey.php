@@ -15,7 +15,7 @@ class ResetKey extends Eloquent {
 	protected $guarded = array('key');
 	public $timestamps = true;
 
-	public static function getInstance($user, $h_delay=24) {
+	public static function getInstance($user, $h_delay=12) {
 		$reset = null;
 		if ( $user instanceof User ) {
 			$reset = new ResetKey();

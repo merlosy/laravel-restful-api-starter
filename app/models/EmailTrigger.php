@@ -73,12 +73,11 @@ class EmailTrigger {
 	                $message->attach( $data['file'] );
 
 	        });
-	        Log::info('<!> ...DONE!');
-	        Log::info( json_encode($data) );
+	        Log::info('...DONE!');
+	        // Log::info( json_encode($data) );
 	        $success = true;
 	    } catch (Exception $e) {
-	    	Log::info('<!> ...FAILED!');
-	    	Log::warning('<!!!> Exception while sending email: '.$e->getMessage() );
+	    	Log::warning('<!!!> ...FAILED! Exception while sending email: '.$e->getMessage() );
 	    }
 
         return $success;
