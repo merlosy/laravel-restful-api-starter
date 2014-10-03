@@ -22,7 +22,7 @@ Social media login:
    - [Facebook] Authentication (sdk v4): Wrapper class to easily connect and retrieve info
 
 Reset Password:
-  - a simple a safe flow to reset a password with single-use short-lived token. No captcha, no personal question.
+  - a simple and safe flow to reset a password with single-use short-lived token. No captcha, no personal question.
 
 ## About it
 
