@@ -234,7 +234,7 @@ class UserController extends BaseController {
 
 			$reset->delete();
 
-			return ApiResponse::json($user);
+			return ApiResponse::json('Password reset successfully!');
 		}
 		else {
 			return ApiResponse::validation($validator);
