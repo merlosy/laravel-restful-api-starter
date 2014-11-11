@@ -1,8 +1,6 @@
 <?php
 
-use Jenssegers\Mongodb\Model as Eloquent;
-
-class Token extends Eloquent {
+class Token extends SmartLoquent {
 
 	protected $collection = 'tokens';
 
