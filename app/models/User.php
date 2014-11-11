@@ -2,11 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-
-use Jenssegers\Mongodb\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends SmartLoquent implements UserInterface, RemindableInterface {
 
 	use SoftDeletingTrait;
 

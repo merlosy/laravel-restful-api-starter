@@ -1,8 +1,6 @@
 <?php
 
-use Jenssegers\Mongodb\Model as Eloquent;
-
-class ResetKey extends Eloquent {
+class ResetKey extends SmartLoquent {
 
 	/**
 	 * The database collection used by the model.
@@ -19,7 +17,7 @@ class ResetKey extends Eloquent {
 		$reset = null;
 		if ( $user instanceof User ) {
 			$reset = new ResetKey();
-			$reset->user_id = $user->id;
+			$reset->user_id = $user->_id;
 			$reset->expiration_date = (new DateTime())->modify('+'.$h_delay.' hours');
 			$reset->key = Token::randomKey(16);
 		}
