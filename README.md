@@ -2,6 +2,8 @@
 
 > Check out the [WIKI] now!
 
+> Contributions are welcome! for both code and doc :)
+
 ## What is it about?
 
 This starter is based on:
